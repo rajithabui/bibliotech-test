@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>book-overview</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <script type="module" src="../src/book-info.js"></script>
+  </head>
+  <body>
+    <test-fixture id="BasicView">
+      <template>
+        <book-overview isbn="pg1017"></book-overview>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+      suite('book-overview tests', function() {
+        test('Should contain iron image', function() {
+          var bookOverview = fixture('BasicView');
+          var ironImage = bookOverview.shadowRoot.querySelector('iron-image');
+
+          assert.notEqual(ironImage, null);
+        });
+
+        test('Should contain paper button', function() {
+          var bookOverview = fixture('BasicView');
+          var paperButton = bookOverview.shadowRoot.querySelector('paper-button');
+
+          assert.notEqual(paperButton, null);
+        });
+
+        test('Paper button should contain text Continue to Payment', function() {
+          var bookOverview = fixture('BasicView');
+          var paperButton = bookOverview.shadowRoot.querySelector('paper-button');
+
+          assert.equal(paperButton.textContent, 'Continue to Payment');
+        });
+
+        test('Should contain book title', function() {
+          var bookOverview = fixture('BasicView');
+          var bookTitle = bookOverview.shadowRoot.querySelector('.book-title');
+
+          assert.notEqual(bookTitle, null);
+        });
+
+        test('ISBN element should be ISBN | pg1017', function() {
+          var bookOverview = fixture('BasicView');
+          var bookISBN = bookOverview.shadowRoot.querySelector('.book-details > span:first-child');
+
+          assert.equal(bookISBN.textContent, 'ISBN | pg1017');
+        });
+      });
+    </script>
+  </body>
+</html>

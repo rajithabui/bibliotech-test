@@ -1,0 +1,7 @@
+{
+  "name": "Books Overview",
+  "short_name": "Books Overview",
+  "description": "Simple books overview app using Polymer Project 3",
+  "start_url": "/",
+  "display": "standalone"
+}
